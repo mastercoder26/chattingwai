@@ -1,0 +1,10 @@
+.env*
+.next
+node_modules
+.impeccable
+tests
+*.tsbuildinfo
+AGENTS.md
+CLAUDE.md
+test-results
+playwright-report

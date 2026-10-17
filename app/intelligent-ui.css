@@ -1,0 +1,864 @@
+/* ==========================================================================
+   Intelligent UI Design System Styles (Glimpse Workspace)
+   Strictly utilizes workspace CSS tokens:
+   --bg, --surface, --line, --text, --muted, --accent, --hover, --soft, --button, --button-text
+   ========================================================================== */
+
+/* Universal Focus visible for Intelligent UI interactive elements */
+.ui-tabs button:focus-visible,
+.ui-comparison button:focus-visible,
+.ui-checklist button:focus-visible,
+.ui-accordion-group button:focus-visible,
+.ui-callout button:focus-visible,
+.ui-stat-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Container focus-within highlight */
+.ui-tabs:focus-within,
+.ui-comparison:focus-within,
+.ui-checklist:focus-within,
+.ui-accordion-group:focus-within,
+.ui-callout:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+}
+
+/* ==========================================================================
+   1. Tabs / Switchable Views (.ui-tabs)
+   ========================================================================== */
+.ui-tabs {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ui-tabs-bar,
+.ui-tab-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ui-tabs-bar::-webkit-scrollbar,
+.ui-tab-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-tab-trigger,
+.ui-tab-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 7px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ui-tab-trigger:hover:not(.active):not([aria-selected="true"]),
+.ui-tab-button:hover:not(.active):not([aria-selected="true"]) {
+  background: var(--hover);
+  color: var(--text);
+}
+
+.ui-tab-trigger.active,
+.ui-tab-button.active,
+.ui-tab-trigger[aria-selected="true"],
+.ui-tab-button[aria-selected="true"] {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ui-tab-panel {
+  padding: 16px 18px;
+  font-size: var(--message-size, 14px);
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.ui-tab-panel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.ui-tab-panel > :first-child {
+  margin-top: 0;
+}
+
+.ui-tab-panel > :last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   2. Side-by-Side Comparison Containers (.ui-comparison)
+   ========================================================================== */
+.ui-comparison {
+  margin: 20px 0;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ui-comparison-header-main,
+.ui-comparison-top {
+  padding: 12px 16px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.ui-comparison-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.ui-comparison-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.ui-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ui-comparison-grid.columns-1 {
+  grid-template-columns: 1fr;
+}
+
+.ui-comparison-grid.columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ui-comparison-column,
+.ui-comparison-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-comparison-column:not(:last-child),
+.ui-comparison-card:not(:last-child) {
+  border-right: 1px solid var(--line);
+}
+
+.ui-comparison-column.recommended,
+.ui-comparison-column.highlight,
+.ui-comparison-card.ui-comparison-highlight,
+.ui-comparison-card.highlight {
+  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+
+.ui-comparison-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.ui-comparison-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.ui-comparison-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.ui-comparison-badge.highlight,
+.ui-comparison-badge.ui-comparison-badge-highlight {
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+  color: var(--accent);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.ui-comparison-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.ui-comparison-body {
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+  flex: 1;
+}
+
+.ui-comparison-pros,
+.ui-comparison-cons {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ui-comparison-pro-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.ui-comparison-pro-item svg {
+  color: #547f63;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ui-comparison-con-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.ui-comparison-con-item svg {
+  color: #b2856a;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ui-comparison-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.ui-comparison-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ui-comparison-detail-key {
+  color: var(--muted);
+}
+
+.ui-comparison-detail-value {
+  font-weight: 500;
+  color: var(--text);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .ui-comparison-grid,
+  .ui-comparison-grid.columns-3 {
+    grid-template-columns: 1fr;
+  }
+  .ui-comparison-column:not(:last-child),
+  .ui-comparison-card:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* ==========================================================================
+   3. Stat and Metric Highlight Cards (.ui-stat-grid)
+   ========================================================================== */
+.ui-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.ui-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.15s ease;
+}
+
+.ui-stat-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+}
+
+.ui-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+.ui-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 2px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ui-stat-unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.ui-stat-caption,
+.ui-stat-description {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ui-stat-delta,
+.ui-stat-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.ui-stat-delta.positive,
+.ui-stat-trend.trend-up,
+.ui-stat-trend.positive {
+  color: #547f63;
+}
+.workspace.dark .ui-stat-delta.positive,
+.workspace.dark .ui-stat-trend.trend-up,
+.workspace.dark .ui-stat-trend.positive,
+.dark .ui-stat-delta.positive,
+.dark .ui-stat-trend.trend-up,
+.dark .ui-stat-trend.positive {
+  color: #a8c69f;
+}
+
+.ui-stat-delta.negative,
+.ui-stat-trend.trend-down,
+.ui-stat-trend.negative {
+  color: #b2856a;
+}
+.workspace.dark .ui-stat-delta.negative,
+.workspace.dark .ui-stat-trend.trend-down,
+.workspace.dark .ui-stat-trend.negative,
+.dark .ui-stat-delta.negative,
+.dark .ui-stat-trend.trend-down,
+.dark .ui-stat-trend.negative {
+  color: #e3aaba;
+}
+
+.ui-stat-trend.neutral,
+.ui-stat-trend.trend-neutral {
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   4. Interactive Checklists (.ui-checklist)
+   ========================================================================== */
+.ui-checklist {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 10px 14px;
+}
+
+.ui-checklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 2px 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+  margin-bottom: 6px;
+}
+
+.ui-checklist-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ui-checklist-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.ui-checklist-progress {
+  height: 4px;
+  background: var(--soft);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.ui-checklist-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.ui-checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 6px;
+  border-radius: 8px;
+  transition: background 0.12s ease;
+}
+
+.ui-checklist-item:hover {
+  background: var(--soft);
+}
+
+.ui-checklist-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+  color: transparent;
+}
+
+.ui-checklist-box:hover {
+  border-color: color-mix(in srgb, var(--text) 40%, var(--line));
+}
+
+.ui-checklist-box.checked,
+.ui-checklist-box[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--button-text, #ffffff);
+}
+
+.workspace.dark.accent-graphite .ui-checklist-box.checked,
+.workspace.dark.accent-graphite .ui-checklist-box[aria-checked="true"] {
+  color: #202020;
+}
+
+.ui-checklist-box svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.5;
+}
+
+.ui-checklist-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+  flex: 1;
+  transition: color 0.15s ease;
+}
+
+.ui-checklist-text.done {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--line);
+}
+
+.ui-checklist-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  margin-left: 6px;
+}
+
+/* ==========================================================================
+   5. Collapsible Accordions (.ui-accordion-group)
+   ========================================================================== */
+.ui-accordion-group {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ui-accordion,
+.ui-accordion-item {
+  display: block;
+}
+
+.ui-accordion:not(:last-child),
+.ui-accordion-item:not(:last-child) {
+  border-bottom: 1px solid var(--line);
+}
+
+.ui-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.ui-accordion-trigger:hover {
+  background: var(--soft);
+}
+
+.ui-accordion-title {
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--text);
+}
+
+.ui-accordion-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
+}
+
+.ui-accordion-trigger[aria-expanded="true"] .ui-accordion-chevron {
+  transform: rotate(180deg);
+  color: var(--text);
+}
+
+.ui-accordion-content,
+.ui-accordion-panel {
+  overflow: hidden;
+}
+
+.ui-accordion-inner {
+  padding: 4px 16px 16px 16px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.ui-accordion-inner > :first-child {
+  margin-top: 0;
+}
+
+.ui-accordion-inner > :last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   6. Styled Callout / Alert Banners (.ui-callout)
+   ========================================================================== */
+.ui-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 11px;
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.65;
+  background: var(--surface);
+}
+
+.ui-callout-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: grid;
+  place-items: center;
+}
+
+.ui-callout-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ui-callout-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-callout-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ui-callout-content {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.ui-callout-content > :first-child {
+  margin-top: 0;
+}
+
+.ui-callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* 6.1 Info Variant */
+.ui-callout.ui-callout-info {
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.ui-callout-info .ui-callout-icon,
+.ui-callout-info .ui-callout-title {
+  color: var(--accent);
+}
+
+/* 6.2 Note Variant */
+.ui-callout.ui-callout-note {
+  background: var(--soft);
+  border-color: var(--line);
+}
+.ui-callout-note .ui-callout-icon,
+.ui-callout-note .ui-callout-title {
+  color: var(--muted);
+}
+
+/* 6.3 Tip Variant */
+.ui-callout.ui-callout-tip {
+  background: color-mix(in srgb, #6c917e 9%, var(--surface));
+  border-color: color-mix(in srgb, #6c917e 28%, var(--line));
+}
+.ui-callout-tip .ui-callout-icon,
+.ui-callout-tip .ui-callout-title {
+  color: #6c917e;
+}
+.workspace.dark .ui-callout.ui-callout-tip,
+.dark .ui-callout.ui-callout-tip {
+  background: color-mix(in srgb, #a3cbb4 11%, var(--surface));
+  border-color: color-mix(in srgb, #a3cbb4 28%, var(--line));
+}
+.workspace.dark .ui-callout-tip .ui-callout-icon,
+.workspace.dark .ui-callout-tip .ui-callout-title,
+.dark .ui-callout-tip .ui-callout-icon,
+.dark .ui-callout-tip .ui-callout-title {
+  color: #a3cbb4;
+}
+
+/* 6.4 Warning Variant */
+.ui-callout.ui-callout-warning {
+  background: color-mix(in srgb, #ba7c8c 9%, var(--surface));
+  border-color: color-mix(in srgb, #ba7c8c 30%, var(--line));
+}
+.ui-callout-warning .ui-callout-icon,
+.ui-callout-warning .ui-callout-title {
+  color: #ba7c8c;
+}
+.workspace.dark .ui-callout.ui-callout-warning,
+.dark .ui-callout.ui-callout-warning {
+  background: color-mix(in srgb, #e3aaba 11%, var(--surface));
+  border-color: color-mix(in srgb, #e3aaba 30%, var(--line));
+}
+.workspace.dark .ui-callout-warning .ui-callout-icon,
+.workspace.dark .ui-callout-warning .ui-callout-title,
+.dark .ui-callout-warning .ui-callout-icon,
+.dark .ui-callout-warning .ui-callout-title {
+  color: #e3aaba;
+}
+
+/* 6.5 Success Variant */
+.ui-callout.ui-callout-success {
+  background: color-mix(in srgb, #547f63 9%, var(--surface));
+  border-color: color-mix(in srgb, #547f63 28%, var(--line));
+}
+.ui-callout-success .ui-callout-icon,
+.ui-callout-success .ui-callout-title {
+  color: #547f63;
+}
+.workspace.dark .ui-callout.ui-callout-success,
+.dark .ui-callout.ui-callout-success {
+  background: color-mix(in srgb, #7d9c7b 11%, var(--surface));
+  border-color: color-mix(in srgb, #7d9c7b 28%, var(--line));
+}
+.workspace.dark .ui-callout-success .ui-callout-icon,
+.workspace.dark .ui-callout-success .ui-callout-title,
+.dark .ui-callout-success .ui-callout-icon,
+.dark .ui-callout-success .ui-callout-title {
+  color: #7d9c7b;
+}
+
+/* ==========================================================================
+   7. Intelligent UI Skeleton Loader (.intelligent-ui-skeleton)
+   ========================================================================== */
+.intelligent-ui-skeleton {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.intelligent-ui-skeleton-bar {
+  height: 14px;
+  border-radius: 4px;
+  background: var(--soft);
+  animation: intelligent-ui-pulse 1.6s ease-in-out infinite;
+}
+
+.intelligent-ui-skeleton-bar.short {
+  width: 40%;
+}
+
+.intelligent-ui-skeleton-bar.medium {
+  width: 70%;
+}
+
+.intelligent-ui-skeleton-bar.full {
+  width: 100%;
+}
+
+@keyframes intelligent-ui-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ==========================================================================
+   8. Safe Fallback Container (.ui-fallback)
+   ========================================================================== */
+.ui-fallback {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ui-fallback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ui-fallback-code {
+  margin: 0;
+  padding: 12px 14px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+  background: transparent;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Accessibility Media Queries: Reduced Motion & High Contrast
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ui-tab-trigger,
+  .ui-tab-button,
+  .ui-stat-card,
+  .ui-checklist-box,
+  .ui-checklist-text,
+  .ui-checklist-progress-bar,
+  .ui-accordion-trigger,
+  .ui-accordion-chevron,
+  .intelligent-ui-skeleton-bar {
+    animation: none !important;
+    transition: none !important;
+  }
+  .intelligent-ui-skeleton-bar {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .ui-tabs,
+  .ui-comparison,
+  .ui-stat-card,
+  .ui-checklist,
+  .ui-accordion-group,
+  .ui-callout,
+  .intelligent-ui-skeleton,
+  .ui-fallback {
+    border-width: 1.5px;
+    border-color: var(--line);
+  }
+
+  .ui-checklist-box {
+    border-width: 2px;
+  }
+}

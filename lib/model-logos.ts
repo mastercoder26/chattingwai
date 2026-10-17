@@ -1,0 +1,53 @@
+const providerLogos: Record<string, string> = {
+  openai: 'openai',
+  amazon: 'aws-color',
+  inclusionai: 'antgroup-color',
+  anthropic: 'claude-color',
+  google: 'gemini-color',
+  qwen: 'qwen-color',
+  deepseek: 'deepseek-color',
+  'x-ai': 'grok',
+  xai: 'grok',
+  mistralai: 'mistral-color',
+  meta: 'meta-color',
+  'meta-llama': 'meta-color',
+  cohere: 'cohere-color',
+  nvidia: 'nvidia-color',
+  'z-ai': 'zai',
+  minimax: 'minimax-color',
+  moonshotai: 'kimi',
+  bytedance: 'bytedance-color',
+  'bytedance-seed': 'bytedance-color',
+  nousresearch: 'nousresearch',
+  perplexity: 'perplexity-color',
+  ai21: 'ai21',
+  'arcee-ai': 'arcee-color',
+  tencent: 'hunyuan-color',
+  xiaomi: 'xiaomimimo',
+  inception: 'inception',
+  liquid: 'liquid',
+  microsoft: 'microsoft-color',
+  'aion-labs': 'aionlabs-color',
+  cognitivecomputations: 'dolphin',
+  'dots-studio': 'dotsstudio',
+  fireworks: 'fireworks-color',
+  'ibm-granite': 'ibm',
+  'inference-net': 'inference',
+  meituan: 'longcat-color',
+  openrouter: 'openrouter',
+  perceptron: 'perceptron',
+  poolside: 'poolside-color',
+  relace: 'relace',
+  sakana: 'sakana-color',
+  upstage: 'upstage-color',
+  rekaai: 'reka',
+  stepfun: 'stepfun-color',
+  morph: 'morph-color',
+};
+
+export function modelLogo(modelId: string, provider?: string): string | undefined {
+  const [namespace, family = ''] = modelId.toLowerCase().split('/');
+  const normalized = (namespace || provider || '').toLowerCase().replace(/^~/, '');
+  if (normalized === 'google' && family.startsWith('gemma')) return 'gemma-color';
+  return providerLogos[normalized] || providerLogos[provider?.toLowerCase() || ''];
+}

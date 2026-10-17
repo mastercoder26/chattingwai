@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-02T01:32:40.827Z",
+        "reason": "Agent: Inter is intentional for long chat replies and compact code controls; Manrope provides the distinctive display typography for the Glance-inspired workspace."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-02T01:32:40.863Z",
+        "reason": "Agent: the only match is .markdown blockquote, a semantic quotation indicator rather than an accent border on a UI card."
+      }
+    ]
+  }
+}

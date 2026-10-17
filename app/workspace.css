@@ -1,0 +1,838 @@
+/* Workspace chrome: quiet surfaces, native type, and consistent interaction sizes. */
+.workspace {
+  --bg: #ffffff;
+  --sidebar: #f6f6f5;
+  --text: #202020;
+  --muted: #737373;
+  --secondary: #585858;
+  --line: #e8e8e6;
+  --soft: #f5f5f4;
+  --hover: #eaeae8;
+  --surface: #ffffff;
+  --button: #242424;
+  --button-text: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter Variable', sans-serif;
+  min-height: 0;
+}
+.workspace.light {
+  --muted: #737373;
+}
+.workspace.accent-graphite {
+  --accent: #353535;
+  --accent-soft: #eeeeec;
+}
+.workspace.dark {
+  --bg: #202020;
+  --sidebar: #191919;
+  --text: #ededed;
+  --muted: #a0a0a0;
+  --secondary: #b5b5b5;
+  --line: #383838;
+  --surface: #292929;
+  --soft: #303030;
+  --hover: #353535;
+  --button: #ededed;
+  --button-text: #202020;
+}
+.workspace.dark.accent-graphite {
+  --accent: #dedede;
+  --accent-soft: #383838;
+}
+.workspace:not(.access-page) {
+  .icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+  .sidebar {
+    width: 248px;
+    padding: 27px 14px 0;
+    border-right: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+    background: var(--sidebar);
+  }
+  .sidebar-brand {
+    margin: 0 3px 28px 9px;
+  }
+  .brand-button {
+    gap: 8px;
+  }
+  .brand-button > span {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.7px;
+  }
+  .brand-button:hover svg {
+    transform: none;
+  }
+  .new-chat {
+    border-radius: 10px;
+    padding: 12px 11px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 2px #00000004;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .new-chat:hover {
+    transform: none;
+    background: var(--hover);
+    box-shadow: none;
+  }
+  .new-chat-shortcut {
+    font-size: 10px;
+    opacity: 0.55;
+  }
+  .sidebar-search {
+    min-height: 42px;
+    margin-top: 5px;
+    padding: 10px 11px;
+    gap: 11px;
+    font-size: 13px;
+    color: var(--secondary);
+  }
+  .sidebar-search kbd {
+    font-size: 10px;
+    border: 0;
+  }
+  .history {
+    margin-top: 35px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding: 0 11px;
+  }
+  .history-empty {
+    padding: 30px 11px;
+    text-align: left;
+  }
+  .history-empty > svg {
+    color: var(--muted);
+    opacity: 0.65;
+    margin-bottom: 12px;
+  }
+  .history-empty p {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .history-empty > span:last-child {
+    font-size: 11px;
+  }
+  .history-open {
+    font-size: 13px;
+    padding: 12px 10px;
+  }
+  .history-item.active {
+    background: var(--hover);
+  }
+  .history-delete {
+    width: 28px;
+    height: 30px;
+  }
+  .sidebar-bottom {
+    padding-top: 10px;
+  }
+  .sidebar-guide {
+    padding: 12px 11px;
+    min-height: 42px;
+    font-size: 12px;
+    border-radius: 9px;
+    gap: 11px;
+  }
+  .sidebar-guide:hover {
+    background: var(--hover);
+    color: var(--text);
+  }
+  .sidebar-guide svg:last-child {
+    margin: 0;
+    transform: none;
+    color: inherit;
+  }
+  .workspace-profile {
+    margin-top: 13px;
+    padding: 18px 7px 20px;
+    gap: 10px;
+  }
+  .workspace-profile strong {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .workspace-profile span {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  .avatar {
+    border: 1px solid var(--line);
+    background: var(--hover);
+    color: var(--secondary);
+  }
+  .topbar,
+  .has-chat .topbar {
+    height: 76px;
+    padding: 0 30px;
+    border-bottom: 0;
+  }
+  .breadcrumb {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary);
+  }
+  .topbar-right {
+    gap: 10px;
+  }
+  .workspace-badge {
+    font-size: 11px;
+    padding: 7px 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .status-dot {
+    width: 5px;
+    height: 5px;
+    background: #7d9282;
+  }
+  .appearance-button {
+    border: 0;
+    background: none;
+  }
+  .chat-title {
+    font-size: 13px;
+  }
+  .content-width {
+    width: min(740px, calc(100% - 80px));
+  }
+  .main:not(.has-chat) .main-scroll {
+    display: flex;
+    flex-direction: column;
+  }
+  .welcome {
+    padding: 0 0 28px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .hero {
+    padding: 22px 0 32px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: inherit;
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 550;
+    letter-spacing: -1.2px;
+    line-height: 1.25;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .composer {
+    padding: 21px 16px 14px 23px;
+    border: 1px solid var(--line);
+    border-radius: 25px;
+    background: var(--surface);
+    box-shadow:
+      0 3px 12px #00000004,
+      0 1px 3px #00000003;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  .composer:focus-within {
+    border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--accent-soft) 55%, transparent),
+      0 3px 12px #00000004;
+  }
+  .composer textarea {
+    font-size: 16px;
+    min-height: 59px;
+    padding: 0 4px 6px 0;
+  }
+  .composer textarea::placeholder {
+    color: var(--muted);
+  }
+  .composer-controls {
+    margin-top: 15px;
+    gap: 8px;
+  }
+  .composer-tools {
+    gap: 8px;
+  }
+  .model-trigger {
+    background: transparent;
+    font-size: 12px;
+    min-height: 36px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    max-width: 240px;
+  }
+  .tool-divider {
+    display: none;
+  }
+  .attach-button {
+    order: -1;
+    color: var(--secondary);
+    border-radius: 50%;
+  }
+  .composer-send {
+    gap: 12px;
+  }
+  .composer-send > span {
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .send-button {
+    height: 36px;
+    width: 36px;
+  }
+  .send-button:disabled {
+    background: var(--hover);
+    color: var(--muted);
+    opacity: 0.8;
+  }
+  .send-button:hover:not(:disabled) {
+    transform: none;
+    box-shadow: 0 2px 6px #0002;
+  }
+  .inspiration {
+    margin-top: 25px;
+  }
+  .inspiration-heading {
+    margin-bottom: 12px;
+  }
+  .inspiration-heading > span {
+    font-size: 11px;
+  }
+  .category-tabs {
+    gap: 2px;
+  }
+  .category-tabs button {
+    font-size: 11px;
+    padding: 7px 11px;
+    border-radius: 7px;
+  }
+  .category-tabs button.active {
+    background: var(--soft);
+    font-weight: 500;
+  }
+  .suggestion-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .suggestion-card {
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 15px 14px;
+    min-height: 116px;
+    background: transparent;
+  }
+  .suggestion-card:hover {
+    border-color: color-mix(in srgb, var(--text) 25%, var(--line));
+    background: var(--soft);
+    box-shadow: none;
+    transform: translateY(-2px);
+  }
+  .suggestion-icon {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border-radius: 0;
+    color: var(--secondary);
+    margin-bottom: 14px;
+  }
+  .suggestion-card strong {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .suggestion-description {
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: none;
+  }
+  .suggestion-arrow {
+    top: 18px;
+    right: 13px;
+  }
+  .welcome-note {
+    font-size: 10px;
+    gap: 6px;
+    margin-top: 23px;
+    color: var(--muted);
+  }
+  .welcome-note > svg {
+    color: var(--muted);
+  }
+  .main-footer {
+    padding: 18px 30px 23px;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .main-footer > span {
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .main-footer > svg {
+    display: none;
+  }
+  .main-footer kbd {
+    font-size: 9px;
+    border-color: var(--line);
+  }
+  .welcome .hero,
+  .welcome .composer,
+  .welcome .inspiration,
+  .welcome-note,
+  .suggestion-grid {
+    animation: workspace-enter 260ms ease-out both;
+  }
+  .conversation {
+    max-width: none;
+    padding-top: 28px;
+  }
+  .message {
+    margin-bottom: 34px;
+    gap: 14px;
+  }
+  .message-avatar {
+    background: var(--soft);
+    border: 0;
+    border-radius: 50%;
+    color: var(--secondary);
+  }
+  .assistant .message-avatar {
+    color: var(--text);
+    background: transparent;
+  }
+  .message-heading strong {
+    font-size: 13px;
+  }
+  .message-heading > span {
+    font-size: 10px;
+  }
+  .message-actions .icon-button {
+    width: 32px;
+    height: 32px;
+  }
+  .user .message-body {
+    background: var(--soft);
+    border-radius: 18px;
+    padding: 14px 18px;
+  }
+  .user .message-heading {
+    margin-bottom: 4px;
+  }
+  .user .message-actions {
+    margin-top: 5px;
+  }
+  .composer-dock {
+    padding-top: 12px;
+    background: var(--bg);
+  }
+  .composer-dock .content-width {
+    max-width: none;
+  }
+  .composer-dock .composer {
+    padding-top: 17px;
+  }
+  .composer-dock .composer textarea {
+    min-height: 40px;
+  }
+  .composer-disclaimer {
+    font-size: 10px;
+    margin: 12px 0 17px;
+  }
+  .dialog {
+    border-radius: 20px;
+  }
+  .dialog-head h2 {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+  }
+  .dialog-head p {
+    font-size: 12px;
+  }
+  .dialog::backdrop {
+    background: #1010104d;
+    backdrop-filter: blur(5px);
+  }
+  .settings-nav button {
+    font-size: 12px;
+  }
+  .setting-section h3 {
+    font-size: 13px;
+  }
+  .setting-section p {
+    font-size: 12px;
+  }
+  .setting-input {
+    font-size: 13px;
+  }
+  .model-info strong {
+    font-size: 13px;
+  }
+  .provider-icon {
+    background: var(--soft);
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+.workspace.sidebar-closed .sidebar {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+}
+.workspace.width-wide .content-width {
+  width: min(1000px, calc(100% - 80px));
+}
+.workspace.density-compact {
+  .history-open {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .message {
+    margin-bottom: 22px;
+  }
+  .markdown,
+  .user-content {
+    line-height: 1.6;
+  }
+  .composer {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  .composer textarea {
+    min-height: 42px;
+  }
+  .composer-controls {
+    margin-top: 6px;
+  }
+  .suggestion-card {
+    min-height: 100px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .suggestion-icon {
+    margin-bottom: 10px;
+  }
+}
+.accent-option.accent-graphite > span {
+  background: #424242;
+}
+.layout-width-label {
+  display: block;
+  margin-top: 18px;
+}
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 23px;
+  cursor: pointer;
+}
+.setting-toggle strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+}
+.setting-toggle small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.setting-toggle input {
+  appearance: none;
+  width: 36px;
+  height: 22px;
+  flex: 0 0 36px;
+  border-radius: 20px;
+  background: var(--hover);
+  border: 1px solid var(--line);
+  padding: 2px;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.setting-toggle input::after {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 1px 3px #0003;
+  transition: transform 180ms ease;
+}
+.setting-toggle input:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.setting-toggle input:checked::after {
+  transform: translateX(14px);
+}
+.access-page {
+  background: var(--bg);
+}
+.access-page h1 {
+  font-family: inherit;
+  font-size: 40px;
+  font-weight: 550;
+  letter-spacing: -1.4px;
+}
+.access-brand {
+  font-family: inherit;
+}
+@keyframes workspace-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1100px) {
+  .workspace:not(.access-page) {
+    .sidebar {
+      width: 224px;
+    }
+    .composer-send > span {
+      display: none;
+    }
+    .suggestion-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .suggestion-card {
+      min-height: 106px;
+    }
+    .suggestion-icon {
+      margin-bottom: 10px;
+    }
+  }
+  .workspace.sidebar-closed .sidebar {
+    width: 0;
+  }
+}
+@media (max-width: 899px) {
+  .workspace:not(.access-page) {
+    .sidebar {
+      width: 260px;
+    }
+    .sidebar-scrim {
+      background: #0003;
+      backdrop-filter: blur(3px);
+    }
+    .welcome {
+      padding-top: 30px;
+    }
+    .main-footer > div {
+      display: flex;
+    }
+  }
+  .workspace.sidebar-closed .sidebar {
+    width: 260px;
+    padding: 27px 14px 0;
+  }
+}
+@media (max-width: 600px) {
+  .workspace:not(.access-page) {
+    .topbar,
+    .has-chat .topbar {
+      height: 64px;
+      padding: 0 16px;
+      gap: 10px;
+    }
+    .topbar-left {
+      gap: 8px;
+    }
+    .topbar-right {
+      gap: 4px;
+    }
+    .workspace-badge {
+      display: none;
+    }
+    .breadcrumb {
+      font-size: 13px;
+    }
+    .chat-title {
+      max-width: 145px;
+      font-size: 12px;
+    }
+    .content-width {
+      width: calc(100% - 32px);
+    }
+    .welcome {
+      padding: 20px 0 30px;
+    }
+    .hero {
+      padding: 12px 10px 26px;
+    }
+    .hero h1 {
+      font-size: 28px;
+      letter-spacing: -0.9px;
+    }
+    .composer {
+      padding: 18px 12px 12px 17px;
+      border-radius: 21px;
+    }
+    .composer textarea {
+      min-height: 62px;
+      font-size: 16px;
+    }
+    .composer-tools {
+      gap: 5px;
+    }
+    .model-trigger {
+      max-width: min(200px, 47vw);
+      font-size: 11px;
+    }
+    .composer-controls {
+      margin-top: 8px;
+    }
+    .inspiration {
+      margin-top: 22px;
+    }
+    .inspiration-heading {
+      gap: 8px;
+    }
+    .inspiration-heading > span {
+      font-size: 10px;
+    }
+    .category-tabs button {
+      font-size: 10px;
+      padding: 7px 8px;
+    }
+    .suggestion-grid {
+      gap: 8px;
+    }
+    .suggestion-card {
+      padding: 13px;
+      min-height: 103px;
+    }
+    .suggestion-card strong {
+      font-size: 12px;
+    }
+    .suggestion-description {
+      font-size: 11px;
+    }
+    .welcome-note {
+      flex-wrap: wrap;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+    .welcome-note .note-dot,
+    .welcome-note button {
+      display: none;
+    }
+    .main-footer {
+      padding: 12px 20px 18px;
+    }
+    .main-footer > div {
+      display: none;
+    }
+    .main-footer > span {
+      margin: 0 auto;
+    }
+    .conversation {
+      padding-top: 16px;
+    }
+    .message {
+      gap: 9px;
+    }
+    .message-avatar {
+      width: 26px;
+      height: 26px;
+    }
+    .user .message-body {
+      padding: 10px 13px;
+    }
+    .message-heading {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .composer-disclaimer {
+      font-size: 9px;
+      margin-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+    .settings-footer {
+      flex-wrap: wrap;
+    }
+    .accent-options {
+      gap: 9px;
+    }
+  }
+}
+@media (max-height: 650px) {
+  .workspace:not(.access-page) .welcome {
+    margin-top: 0;
+    padding-top: 8px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .workspace .sidebar-scrim,
+  .workspace .dialog::backdrop {
+    backdrop-filter: none;
+    background: #0006;
+  }
+}
+@media (prefers-contrast: more) {
+  .workspace {
+    --muted: #4a4a4a;
+    --secondary: #333;
+    --line: #777;
+  }
+  .workspace.dark {
+    --muted: #ccc;
+    --secondary: #eee;
+    --line: #888;
+  }
+}
+.brand-mark {
+  display: inline-block;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('/brand/glimpse-logo.png') center / contain no-repeat;
+}
+.workspace:not(.access-page) {
+  .suggestion-card {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 11px 13px;
+    border-radius: 24px;
+  }
+  .suggestion-icon {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+  }
+  .suggestion-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .suggestion-card strong {
+    margin: 0;
+    font-size: 12px;
+  }
+  .suggestion-description,
+  .suggestion-arrow {
+    display: none;
+  }
+  .main-footer > .brand-mark {
+    display: none;
+  }
+}
